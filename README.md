@@ -37,14 +37,16 @@ Se han definido las siguientes rutas:
 **/updateuser/1:** se cargará reutilizando el formulario de registro los datos del usuario a actualizar para que se pueda actualizar los datos y mandárselos al api.
 
 ## 2.2 Componentes.
-He definido hasta 4 tipos de componentes teniendo en cuenta la aplicación principal.
+He definido hasta 5 tipos de componentes teniendo en cuenta la aplicación principal.
 
 Componentes:
 
-* CP1 -> **App**
-* CP2 -> **Caption**
-* CP3 -> **Profile**
-* CP4 -> **Formulary**
+* CP1 -> **App** componente de aplicación principal
+* CP2 -> **Home** Componente home que contendrá el grid de componentes Caption.
+* CP3 -> **Caption** Componente para la generación de los Captions.
+* CP4 -> **Profile** Componente para la visualización del perfil de cada usuario.
+* CP5 -> **Formulary** fomrulario de contacto para crear o modificar los usuarios.
+* CP6 -> **C404** Para mostrar error cuando la página no se encuentra.
 
 Estos se han creado mediante los siguientes comandos:
 
@@ -52,6 +54,7 @@ Estos se han creado mediante los siguientes comandos:
 ng generate component components/caption --skip-tests
 ng generate component components/profile --skip-tests
 ng generate component components/formulary --skip-tests
+ng g c components/c404 --skip-tests
 ```
 
 
