@@ -37,11 +37,11 @@ Se han definido las siguientes rutas:
 **/updateuser/1:** se cargará reutilizando el formulario de registro los datos del usuario a actualizar para que se pueda actualizar los datos y mandárselos al api.
 
 ## 2.2 Componentes.
-He definido hasta 5 tipos de componentes teniendo en cuenta la aplicación principal.
+He definido hasta 6 tipos de componentes teniendo en cuenta la aplicación principal.
 
 Componentes:
 
-* CP1 -> **App** componente de aplicación principal
+* CP1 -> **App** componente de aplicación principal.
 * CP2 -> **Home** Componente home que contendrá el grid de componentes Caption.
 * CP3 -> **Caption** Componente para la generación de los Captions.
 * CP4 -> **Profile** Componente para la visualización del perfil de cada usuario.
