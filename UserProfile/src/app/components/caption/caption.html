@@ -1,1 +1,23 @@
-<p>caption works!</p>
+<div class="card">
+  <div class="profile-image">
+    <img src="logo.png" class="card-img-top" alt="...">
+  </div>
+
+  <div class="card-body">
+    <h2> Nombre del Usuario</h2>
+    <div class="profile-options">
+      <div class="option">
+        <img src="logo.png" alt="">
+        <button type="button" class="btn" [routerLink]="['/user', 1]">Ver Detalle</button>
+      </div>
+      <div class="option">
+        <img src="logo.png" alt="">
+        <button type="button" class="btn">Actualizar</button>
+      </div>
+      <div class="option">
+        <img src="logo.png" alt="">
+        <button type="button" class="btn">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>

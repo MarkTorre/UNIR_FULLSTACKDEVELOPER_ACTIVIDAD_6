@@ -1,0 +1,38 @@
+.profile-image {
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  padding-bottom: 10px;
+  padding-top: 25px;
+  img {
+    border-radius: 50%;
+    width: 80%;
+  }
+
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.profile-options {
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+
+  .option {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+    img {
+      width:50%;
+    }
+    button {
+      padding: 5px;
+      font-size:12px;
+    }
+  }
+}

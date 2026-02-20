@@ -40,7 +40,7 @@ header {
     text-decoration: none;
   }
 
-  .active { /*para mantener la especificad tengo que poner la etiqueta #head-menu. Con la clase solo no genera orden de especifidad superior al selector que tenemos más arriba #head-menu con a anidado*/
+  .active {
     color:var(--color-red1);
   }
 
