@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:host{
+  --color-grey1: rgb(145, 145, 145);
+}
+
+/*1. Header*/
+header {
+  display:flex;
+  flex-direction: column;
+  margin: 10px 10px 10px 10px;
+}
+
+#header-nav {
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+#header-logo {
+  display:flex;
+  flex-direction: column;
+  width: 70px;
+}
+
+#header-menu {
+  display:flex;
+  flex-direction:row;
+  gap:20px;
+  font-family: 'Inter';
+  font-weight: 700;
+  list-style-type: none;
+}
+
+#header-span {
+  height: 2px;
+  background-color: var(--color-grey1);
+  margin: 10px 0px 10px 0px;
+}

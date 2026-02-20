@@ -1,12 +1,14 @@
 <header>
-  <div class="log">
-    <img src="´logo.png" alt="">
-  </div>
-  <nav>
+  <nav id="header-nav">
+    <div id="header-logo">
+      <img src="logo.png" alt="">
+    </div>
+    <ul id="header-menu">
       <a [routerLink]="['/home']">Home</a>
       <a [routerLink]="['/newuser']">New User</a>
+    </ul>
   </nav>
-  <div class="span-header"></div>
+  <div id="header-span"></div>
 </header>
 
 <main class="main">
