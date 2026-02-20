@@ -5,6 +5,6 @@ export interface IPage {
     per_page: number,
     total: number,
     total_pages: number,
-    data: Array<Iuser>
+    data: Array<IUser>
 }
 
