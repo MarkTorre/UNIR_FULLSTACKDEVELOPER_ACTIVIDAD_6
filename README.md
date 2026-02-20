@@ -79,8 +79,8 @@ De aquí podemos generar dos interfaces:
 Estos se han creado mediante los siguientes comandos:
 
 ```bash
-ng generate interface interfaces/ipage --skip-tests
-ng generate interface interfaces/iuser --skip-tests
+ng generate interface interfaces/ipage
+ng generate interface interfaces/iuser
 ```
 
 ### 3.2 Servicios
@@ -92,5 +92,5 @@ En el diseño de arquitectura de sistema, se ha identificado la necesidad de un 
 El servicio se ha creado mediante el siguiente comandos:
 
 ```bash
-ng generate service services/service --skip-tests
+ng generate service services/service
 ```
