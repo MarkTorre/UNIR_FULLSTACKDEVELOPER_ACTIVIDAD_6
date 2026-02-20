@@ -94,3 +94,10 @@ El servicio se ha creado mediante el siguiente comandos:
 ```bash
 ng generate service services/service
 ```
+
+
+# 4. Diseño Componente Home
+En este componente se mostrará una rejilla (grid) de los usuraios que nos proporciona la API.
+Mediante el Servicio nos subscribiremos al inicio de la pagina ngOnInit, para actualizar la pantalla cada
+vez que haya un cambio (eliminación, creacion o modificación de usuarios).
+
