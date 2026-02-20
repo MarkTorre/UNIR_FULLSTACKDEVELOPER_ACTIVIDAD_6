@@ -1,6 +1,6 @@
-import { Iuser } from "./iuser";
+import { IUser } from "./iuser";
 
-export interface Ipage {
+export interface IPage {
     page: number,
     per_page: number,
     total: number,
