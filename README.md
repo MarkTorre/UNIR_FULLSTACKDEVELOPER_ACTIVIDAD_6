@@ -96,8 +96,27 @@ ng generate service services/service
 ```
 
 
-# 4. Diseño Componente Home
+## 4. Diseño Componente Home
 En este componente se mostrará una rejilla (grid) de los usuraios que nos proporciona la API.
 Mediante el Servicio nos subscribiremos al inicio de la pagina ngOnInit, para actualizar la pantalla cada
 vez que haya un cambio (eliminación, creacion o modificación de usuarios).
 
+## Bootsrap
+Antes de empezar con la maquetación usaremos el framework Boostrap para facilitar el diseño de la del sitio web.
+
+Instalaraemos Boostrap con el siguiente comando:
+```bash
+npm i bootstrap@5.3.8
+```
+
+Una vez instalado mediante el node package manager, tenemos que añadir en **angular.json**, la ruta de la hojaa de esitlos y el fichero de javascript para poder utilizarlo en nuestro proyecto.
+
+```json
+"styles": [
+    "src/styles.css",
+    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+],
+"scripts": [
+    "node_modules/bootstrap/dist/css/bootstrap.min.js"
+]
+```      
