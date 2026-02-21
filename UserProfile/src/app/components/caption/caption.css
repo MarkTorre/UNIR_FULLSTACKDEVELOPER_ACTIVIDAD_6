@@ -5,34 +5,31 @@
   padding-bottom: 10px;
   padding-top: 25px;
   img {
-    border-radius: 50%;
-    width: 80%;
+    border-radius: 100%;
+    width: 60%;
   }
 
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .profile-options {
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-
-  .option {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-    img {
-      width:50%;
-    }
-    button {
-      padding: 5px;
-      font-size:12px;
-    }
+  img {
+      width:100%;
   }
+  .col{
+    container-type: inline-size; /*Para que el navegador sepa el ancho de las columnas y lo puedan  utilizar sus hijos*/
+    padding:2px;
+  }
+
+  button {
+      padding: 3px;
+      font-size: 18cqw; /*Container Query Width: midel el 18% del ancho del padre contenedor*/
+  }
+}
+
+.card-width{
+  min-width:160px;
 }

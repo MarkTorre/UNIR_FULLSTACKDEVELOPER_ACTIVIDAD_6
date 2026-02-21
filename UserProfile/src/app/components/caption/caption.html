@@ -1,23 +1,25 @@
-<div class="card">
+<div class="card card-width">
   <div class="profile-image">
     <img src="logo.png" class="card-img-top" alt="...">
   </div>
 
-  <div class="card-body">
+  <div class="card-body card-width">
     <h2> Nombre del Usuario</h2>
-    <div class="profile-options">
-      <div class="option">
+    <div class="container text-center">
+    <div class="row row-cols-3 profile-options">
+      <div class="col">
         <img src="logo.png" alt="">
         <button type="button" class="btn" [routerLink]="['/user', 1]">Ver Detalle</button>
       </div>
-      <div class="option">
+      <div class="col">
         <img src="logo.png" alt="">
-        <button type="button" class="btn">Actualizar</button>
+        <button type="button" class="btn" [routerLink]="['/user', 1]">Actualizar</button>
       </div>
-      <div class="option">
+      <div class="col">
         <img src="logo.png" alt="">
-        <button type="button" class="btn">Borrar</button>
+        <button type="button" class="btn" [routerLink]="['/user', 1]">Borrar</button>
       </div>
+    </div>
     </div>
   </div>
 </div>
