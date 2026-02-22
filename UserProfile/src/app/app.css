@@ -57,31 +57,3 @@ main {
   padding: var(--page-padding);
   padding-top:0px;
 }
-
-/* Footer*/
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items:center;
-  padding-bottom: 20px;
-  .page-circle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius:100%;
-    border-color:black;
-    border-style: solid;
-    border-width: 1px;
-    padding:20p;
-  }
-  .page-interline{
-    width:100px;
-    border-color:rgb(189, 189, 189);
-    border-style: solid;
-    border-width: 1px;
-  }
-}

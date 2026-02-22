@@ -16,8 +16,9 @@ export class Service {
     return this.httpClient.get<IPage>(this.url);
   }
 
-  getUserById(id: number): Observable<IUser> {
-    return this.httpClient.get<IUser>(this.url+`${id}`);
+  getUserById(id: string): Observable<IUser> {
+    console.log(this.url+`/${id}`)
+    return this.httpClient.get<IUser>(this.url+`/${id}`);
   }
 
   createNewUser(user: IUser): Observable<IUser> {
@@ -26,11 +27,11 @@ export class Service {
 
   updateUser(id: number, firstname: string, username: string): Observable<IUser> {
     const userToUpdate = {"first_name": firstname, "username":username};
-    return this.httpClient.put<IUser>(this.url+`${id}`, userToUpdate);
+    return this.httpClient.put<IUser>(this.url+`/${id}`, userToUpdate);
   }
 
-  deleteUser(id: number): Observable<IUser> {
-    return this.httpClient.delete<IUser>(this.url+`${id}`);
+  deleteUser(id: string): Observable<IUser> {
+    return this.httpClient.delete<IUser>(this.url+`/${id}`);
   }
 
 

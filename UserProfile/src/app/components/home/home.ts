@@ -23,15 +23,12 @@ export class Home {
                                                                        // La he creado como signal para que cuando se ejecute el ngOnInit, avise al bulce @for del html
                                                                        // de que debe ejecutarse de nuevo. Esto se debe a que la petición del cliente Http es asíncrona y justo al inicio
                                                                        // cuando se ejecuta el bucle for aún no se ha actualizado la tabla this.pages
-
-
   ngOnInit(): void {
     this.clientHttp.getAllUsers( ).subscribe( (data:IPage)=> {
+      data.results.sort((a, b) => a.id - b.id);
+      console.log(data)
       this.pages.push(data)
       this.current_page.set(data.page) // Para que se muestre la primera página
-      console.log(this.pages)
-      console.log(this.current_page)
     })
-    console.log("ngOnInit")
   }
 }
