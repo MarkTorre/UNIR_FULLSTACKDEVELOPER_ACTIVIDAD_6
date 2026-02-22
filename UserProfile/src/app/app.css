@@ -3,13 +3,14 @@
 :host{
   --color-grey1: rgb(145, 145, 145);
   --color-red1: rgb(249, 90, 90);
+  --page-padding: 20px 40px 20px 40px;
 }
 
 /*1. Header*/
 header {
   display:flex;
   flex-direction: column;
-  margin: 20px 40px 20px 40px;
+  padding: 20px 40px 20px 40px;
 }
 
 #header-nav {
@@ -50,4 +51,9 @@ header {
   height: 2px;
   background-color: var(--color-grey1);
   margin: 20px 0px 20px 0px;
+}
+
+main {
+  padding: var(--page-padding);
+  padding-top:0px;
 }

@@ -1,11 +1,14 @@
 <section>
-  <div class="container text-center">
+  <div class="container-fluid text-center">
     <div class="row row-cols-5">
-      @for(user of pages[current_page].results; track user.id ){
+      @if(current_page() !== NO_PAGE){ <!-- Para que no se cargue el contenido por defecto hasta que no se haya ejecutado la petición al cliente-->
+        @for(user of pages[current_page()].results; track user.id ){
         <div class="col">
           <app-caption [user] = "user"></app-caption>
         </div>
+        }
       }
+
     </div>
   </div>
 
