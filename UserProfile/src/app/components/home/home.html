@@ -1,11 +1,11 @@
 <section>
   <div class="container text-center">
-    <div class="row row-cols-4">
-
+    <div class="row row-cols-5">
+      @for(user of pages[current_page].results; track user.id ){
         <div class="col">
-          <app-caption></app-caption>
+          <app-caption [user] = "user"></app-caption>
         </div>
-
+      }
     </div>
   </div>
 

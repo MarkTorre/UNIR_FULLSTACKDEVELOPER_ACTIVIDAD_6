@@ -13,12 +13,15 @@ import { Caption } from '../caption/caption';
 })
 export class Home {
   private clientHttp = inject(Service);
-  page: IPage = IPAGE_INIT;
+  pages: Array<IPage> = [IPAGE_INIT]; // Inicializamos el numero de paginas con una pagina predefinida.
+  current_page: number = 0;
+
 
   ngOnInit(): void {
     this.clientHttp.getAllUsers( ).subscribe( (data:IPage)=> {
-      this.page = data;
-      console.log(this.page)
+      this.pages.push(data)
+      this.current_page = data.page; // Para que se muestre la primera página
+      console.log(this.pages)
     })
 
   }

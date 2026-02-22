@@ -13,5 +13,7 @@ export const IPAGE_INIT: IPage = {
   per_page: 10,
   total: 15,
   total_pages: 2,
-  results: new Array(10).fill(IUSER_INIT)
+  results: Array.from({ length: 10 }, (_, index) => ({...IUSER_INIT, id: index })) // Para hacer una copia de un objeto {...Object}
 }
+
+

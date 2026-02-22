@@ -2,4 +2,7 @@
 section {
   display:flex;
   flex-direction:row;
+  .col {
+    padding-bottom:20px;
+  }
 }
