@@ -135,7 +135,5 @@ Una vez instalado mediante el node package manager, tenemos que añadir en **ang
 
 
 ## 5. Diseño Componente Profile
-El componente Profile, se genera a través de la petición de usuario de la API que nos proporciona el servicio Service, y mediante el identificador de usuario que le pasamos por la ruta.
-
-
+El componente Profile se genera a través de la petición de usuario de la API que nos proporciona el servicio Service mediante el identificador de usuario que le pasamos por la ruta.
 
