@@ -1,4 +1,20 @@
 @if(user()._id !== "null") {
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" id="exampleModalLabel">Deseas Borrar el usuario {{user().username}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelBootstrapModal($event)"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" (click)="cancelBootstrapModal($event)" >Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="[deleteUser(),cancelBootstrapModal($event)]" >Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
   <div id="profile_img">
     <img [src]="user().image" alt="">
   </div>
@@ -15,7 +31,7 @@
       <span>{{user().email}}</span>
     </div>
     <div class="btn-group">
-      <button class="btn btn-outline-secondary" (click)="deleteUser()">Eliminar</button>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-secondary">Eliminar</button>
       <button class="btn btn-outline-secondary" (click)="routeToUpdateUser()">Actualizar</button>
       <button class="btn btn-outline-secondary" (click)="routeToHome()">Volver al listado</button>
     </div>

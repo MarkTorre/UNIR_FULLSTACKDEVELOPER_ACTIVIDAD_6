@@ -17,7 +17,6 @@ export class Service {
   }
 
   getUserById(id: string): Observable<IUser> {
-    console.log(this.url+`/${id}`)
     return this.httpClient.get<IUser>(this.url+`/${id}`);
   }
 
