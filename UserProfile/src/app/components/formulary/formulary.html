@@ -1,1 +1,29 @@
-<p>formulary works!</p>
+
+<h3>{{(title())}}</h3>
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="nombre">Nombre Usuario</label>
+  <input type="text" id="nombre" name="nombre" formControlName="nombre">
+  @if(form.controls['nombre'].touched === true &&
+      form.controls['nombre'].valid   === false) {
+    <span>Nombre del usuario requerido</span>
+  }
+  <label for="apellido">Apellido Usuario</label>
+  <input type="text" name="apellido" formControlName="apellido">
+  @if(form.controls['apellido'].touched === true &&
+      form.controls['apellido'].valid   === false) {
+    <span>Apellido del usuario requerido</span>
+  }
+  <label for="email">Email Usuario</label>
+  <input type="text" name="email" formControlName="email">
+  @if(form.controls['email'].touched === true &&
+      form.controls['email'].valid   === false) {
+    <span>Email del usuario requerido</span>
+  }
+  <label for="imagen">Imagen Usuario</label>
+  <input type="text" name="imagen" formControlName="imagen">
+  @if(form.controls['imagen'].touched === true &&
+      form.controls['imagen'].valid   === false) {
+    <span>Url imagen del usuario requerido</span>
+  }
+  <button type="submit" class="btn btn-outline-primary" [disabled]="!form.valid">{{button_text()}}</button>
+</form>
