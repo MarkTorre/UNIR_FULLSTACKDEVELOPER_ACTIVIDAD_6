@@ -10,7 +10,7 @@ export interface IUser {
 }
 
 export const IUSER_DEFAULT: IUser = {
-  _id: "63740fede2c75d8744f80a4a",
+  _id: "null",
   id: 0,
   first_name: "First name not found",
   last_name: "Last name not found",

@@ -1,7 +1,23 @@
-<div>
-<img src="" alt="">
-<div class="profile_separator"></div>
-<div>
-
-</div>
-</div>
+@if(user()._id !== "null") {
+  <div id="profile_img">
+    <img [src]="user().image" alt="">
+  </div>
+  <div id="profile_separator"></div>
+  <div id="profile_content">
+    <div class="nombre">{{user().first_name}}</div>
+    <div class="apellido">{{user().last_name}}</div>
+    <div class="username">
+      <strong>Nombre Usuario: </strong>
+      <span>{{user().username}}</span>
+    </div>
+    <div class="email">
+      <strong>Email: </strong>
+      <span>{{user().email}}</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline-secondary" (click)="deleteUser()">Eliminar</button>
+      <button class="btn btn-outline-secondary" (click)="routeToUpdateUser()">Actualizar</button>
+      <button class="btn btn-outline-secondary" (click)="routeToHome()">Volver al listado</button>
+    </div>
+  </div>
+}

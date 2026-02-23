@@ -1,0 +1,48 @@
+:host {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  padding-top: 20px;
+}
+
+#profile_img {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+  img {
+    width:80%;
+    min-width:200px;
+    border-radius: 100%;
+  }
+}
+
+#profile_separator {
+  width: 0px;
+  border-style:solid;
+  border-color: grey;
+  border-width: 1px;
+}
+
+#profile_content {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding-left: 50px;
+  padding-right: 50px;
+  gap: 5%;
+  .nombre, .apellido{
+    font-family: 'Inter';
+    font-size: 36px;
+    font-weight: 300;
+  }
+  .btn-group{
+    padding-top:2cqw;
+    min-width:300px;
+    max-width:600px;
+  }
+}
+
+

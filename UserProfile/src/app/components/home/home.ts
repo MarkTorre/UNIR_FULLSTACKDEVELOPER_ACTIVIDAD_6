@@ -59,8 +59,6 @@ export class Home {
     this.current_page.set(current)
   }
 
-
-
   deleteUser($event:string) {
     this.clientHttp.deleteUser($event).subscribe((data) => {
         // Test
@@ -69,6 +67,7 @@ export class Home {
         // this.getUsers();
       })
   }
+
   /*Tests Methods*/
   testEmulateDelete($event:string) {
     const current = this.current_page();
