@@ -1,5 +1,5 @@
 import { IUser,IUSER_DEFAULT } from './../../interfaces/iuser';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,4 +10,9 @@ import { RouterLink } from '@angular/router';
 })
 export class Caption {
   @Input() user:IUser = IUSER_DEFAULT;
+  @Output() delete: EventEmitter<string> = new EventEmitter()
+
+  deleteUser() {
+    this.delete.emit(this.user._id)
+  }
 }

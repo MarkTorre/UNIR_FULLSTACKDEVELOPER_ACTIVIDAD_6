@@ -1,14 +1,11 @@
 <section>
   <div class="container-fluid text-center">
     <div class="row row-cols-5">
-      @if(current_page() !== NO_PAGE){ <!-- Para que no se cargue el contenido por defecto hasta que no se haya ejecutado la petición al cliente-->
-        @for(user of pages[current_page()].results; track user.id ){
+        @for(user of pages[current_page()]; track user.id ){
         <div class="col">
-          <app-caption [user] = "user"></app-caption>
+          <app-caption [user]="user" (delete)="deleteUser($event)"></app-caption>
         </div>
         }
-      }
-
     </div>
   </div>
 
@@ -17,11 +14,16 @@
 </section>
 
 <footer>
-  <button class="page-circle">1</button>
-  <div class="page-interline"></div>
-  <button class="page-circle">2</button>
-  <div class="page-interline"></div>
-  <button class="page-circle">3</button>
+  @for(page of pages; track $index){
+    @if ($first) {
+      <button class="page-circle" (click)="changeCurrentPage($index)">{{$index+1}}</button>
+      <div class="page-interline"></div>
+    }
+    @if ($last) {
+      <div class="page-interline"></div>
+      <button class="page-circle" (click)="changeCurrentPage($index)">{{$index+1}}</button>
+    }
+  }
 </footer>
 
 

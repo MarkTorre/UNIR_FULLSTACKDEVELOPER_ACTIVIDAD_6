@@ -9,7 +9,7 @@ export interface IPage {
 }
 
 export const IPAGE_DEFAULT: IPage = {
-  page: 1,
+  page: 0,
   per_page: 10,
   total: 15,
   total_pages: 2,
