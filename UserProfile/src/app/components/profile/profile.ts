@@ -30,7 +30,7 @@ export class Profile {
   }
 
   routeToUpdateUser() {
-    this.router.navigate([`/updateuser/${this.user()._id}`])
+    this.router.navigate(["/updateuser", this.user()._id])
   }
 
   deleteUser() {
