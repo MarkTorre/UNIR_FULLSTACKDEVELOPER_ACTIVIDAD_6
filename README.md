@@ -97,9 +97,21 @@ ng generate service services/service
 
 
 ## 4. Diseño Componente Home
-En este componente se mostrará una rejilla (grid) de los usuraios que nos proporciona la API.
-Mediante el Servicio nos subscribiremos al inicio de la pagina ngOnInit, para actualizar la pantalla cada
-vez que haya un cambio (eliminación, creacion o modificación de usuarios).
+En este componente se mostrará una rejilla (grid) hecha con bootstrap de los usuraios que nos proporciona la API.
+Mediante el componente Servicio ejecutaremos los métodos de obtención de usuarios para mostrar los usuarios en cada página. 
+
+Se ha implementado un signal en el componente Home:
+
+```ts
+current_page: WritableSignal<number> = signal<number>(this.NO_PAGE); 
+```
+ 
+Este signal nos permite regenerar la tabla de usuarios según la página que se le ha indicado a través de los eventos de los botones del footer.
+
+Cada vez vez que haya un cambio (eliminación, creación o modificación de usuarios).
+
+Como la API es un mockup (prueba). Se ha generado la petición para poder eliminar un usuario y se valida que la respuesta ha funcionado correctamente.
+Para tener un feedback en la práctica elimino localmente el componente del grid, de esta forma se puede validar la reorganicación de las cartas cuando una desaparece.
 
 ## Bootsrap
 Antes de empezar con la maquetación usaremos el framework Boostrap para facilitar el diseño de la del sitio web.
@@ -119,4 +131,5 @@ Una vez instalado mediante el node package manager, tenemos que añadir en **ang
 "scripts": [
     "node_modules/bootstrap/dist/css/bootstrap.min.js"
 ]
-```      
+``` 
+

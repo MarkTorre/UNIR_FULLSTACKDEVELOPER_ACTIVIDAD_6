@@ -19,14 +19,13 @@ export class Home {
   // Servicios
   private clientHttp = inject(Service);
   // Propiedades
-  page: IPage = IPAGE_DEFAULT;
   pages: Array<Array<IUser>> =[[IUSER_DEFAULT]]
   current_page: WritableSignal<number> = signal<number>(this.NO_PAGE); // Current page es la propiedad que nos indica en que pagina estamos.
-                                                                       // La he creado como signal para que cuando se ejecute el ngOnInit, avise al bulce @for del html
-                                                                       // de que debe ejecutarse de nuevo. Esto se debe a que la petición del cliente Http es asíncrona y justo al inicio
-                                                                       // cuando se ejecuta el bucle for aún no se ha actualizado la tabla this.pages
+                                                                       // La he creado como signal para que cuando cambie su valor avise al bulce @for del html
+                                                                       // de que debe ejecutarse de nuevo.
   ngOnInit(): void {
     this.getUsers();
+    this.current_page.set(0);
   }
 
   getUsers(){
@@ -46,7 +45,7 @@ export class Home {
         }
       }
       // Almacena los usuarios en cada pagina a mostrar
-      this.current_page.set(0);
+      this.triggerCurrentPage();
     })
   }
 
@@ -54,12 +53,29 @@ export class Home {
     this.current_page.set($event);
   }
 
+  triggerCurrentPage() {
+    const current = this.current_page()
+    this.current_page.set(this.NO_PAGE)
+    this.current_page.set(current)
+  }
+
+
+
   deleteUser($event:string) {
     this.clientHttp.deleteUser($event).subscribe((data) => {
-      console.log(data)
-      this.getUsers();
+        // Test
+        this.testEmulateDelete($event);
+        // En la práctica real hariamos update de los usuarios:
+        // this.getUsers();
       })
-
   }
+  /*Tests Methods*/
+  testEmulateDelete($event:string) {
+    const current = this.current_page();
+    let new_pages = this.pages[current].filter(user => user._id !== $event);
+    this.pages[current] = new_pages
+    this.triggerCurrentPage();
+  }
+
 
 }
