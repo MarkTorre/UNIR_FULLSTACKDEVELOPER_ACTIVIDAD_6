@@ -3,27 +3,27 @@
 <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
   <label for="nombre">Nombre Usuario</label>
   <input type="text" id="nombre" name="nombre" formControlName="nombre">
-  @if(form.controls['nombre'].touched === true &&
-      form.controls['nombre'].valid   === false) {
+  @if(form.controls['nombre'].touched && form.controls['nombre'].invalid) {
     <span>Nombre del usuario requerido</span>
   }
   <label for="apellido">Apellido Usuario</label>
   <input type="text" name="apellido" formControlName="apellido">
-  @if(form.controls['apellido'].touched === true &&
-      form.controls['apellido'].valid   === false) {
+  @if(form.controls['apellido'].touched && form.controls['apellido'].invalid) {
     <span>Apellido del usuario requerido</span>
   }
   <label for="email">Email Usuario</label>
   <input type="text" name="email" formControlName="email">
-  @if(form.controls['email'].touched === true &&
-      form.controls['email'].valid   === false) {
-    <span>Email del usuario requerido</span>
+  @if(form.controls['email'].touched && form.controls['email'].invalid) {
+      <span>Email del usuario requerido</span>
   }
   <label for="imagen">Imagen Usuario</label>
   <input type="text" name="imagen" formControlName="imagen">
-  @if(form.controls['imagen'].touched === true &&
-      form.controls['imagen'].valid   === false) {
-    <span>Url imagen del usuario requerido</span>
+  @if(form.controls['imagen'].touched && form.controls['imagen'].invalid) {
+    @if(form.controls['imagen'].hasError('required')){
+      <span>Url imagen del usuario requerido</span>
+    } @else if(form.controls['imagen'].hasError('pattern')) {
+      <span>Url imagen no correcta (http://.. o https://) </span>
+    }
   }
   <button type="submit" class="btn btn-outline-primary" [disabled]="!form.valid">{{button_text()}}</button>
 </form>

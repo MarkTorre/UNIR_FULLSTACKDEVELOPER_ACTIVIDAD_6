@@ -4,6 +4,8 @@ import { IPage } from '../interfaces/ipage';
 import { IUser } from '../interfaces/iuser';
 import { Observable } from 'rxjs'
 
+export type RequestUpdateUser = Pick<IUser, "first_name" | "username">
+export type RequestNewUser = Pick<IUser, "first_name" | "last_name" | "email" | "username" | "password">
 
 @Injectable({
   providedIn: 'root',
@@ -20,13 +22,12 @@ export class Service {
     return this.httpClient.get<IUser>(this.url+`/${id}`);
   }
 
-  createNewUser(user: IUser): Observable<IUser> {
-    return this.httpClient.post<IUser>(this.url,user);
+  createNewUser(user: RequestNewUser): Observable<IUser> {
+    return this.httpClient.post<IUser>(this.url, user);
   }
 
-  updateUser(id: number, firstname: string, username: string): Observable<IUser> {
-    const userToUpdate = {"first_name": firstname, "username":username};
-    return this.httpClient.put<IUser>(this.url+`/${id}`, userToUpdate);
+  updateUser(id: string, user: RequestUpdateUser): Observable<IUser> {
+    return this.httpClient.put<IUser>(this.url+`/${id}`, user);
   }
 
   deleteUser(id: string): Observable<IUser> {
