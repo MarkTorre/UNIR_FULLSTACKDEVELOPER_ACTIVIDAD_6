@@ -1,15 +1,18 @@
+import { bootstrapApplication } from '@angular/platform-browser';
 import { IPage, IPAGE_DEFAULT } from './../../interfaces/ipage';
 import { Component, inject, OnInit, WritableSignal, signal} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Service } from '../../services/service';
 import { Observable } from 'rxjs';
-import { Caption } from '../caption/caption';
+import { Caption, CaptionUserId } from '../caption/caption';
 import { IUser, IUSER_DEFAULT } from '../../interfaces/iuser';
+import { DeleteUserPopup, CSS_ID_MODAL } from '../delete-user-popup/delete-user-popup';
+import * as bootstrap from 'bootstrap';
 
 
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, Caption],
+  imports: [RouterOutlet, Caption, DeleteUserPopup],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -23,6 +26,8 @@ export class Home {
   current_page: WritableSignal<number> = signal<number>(this.NO_PAGE); // Current page es la propiedad que nos indica en que pagina estamos.
                                                                        // La he creado como signal para que cuando cambie su valor avise al bulce @for del html
                                                                        // de que debe ejecutarse de nuevo.
+  caption_user: CaptionUserId = IUSER_DEFAULT; // Como CaptionUserId es un tipo Pick de IUser lo podemos inicializar directamente con IUSER_DEFAULT.
+
   ngOnInit(): void {
     this.getUsers();
     this.current_page.set(0);
@@ -59,22 +64,9 @@ export class Home {
     this.current_page.set(current)
   }
 
-  deleteUser($event:string) {
-    this.clientHttp.deleteUser($event).subscribe((data) => {
-        // Test
-        this.testEmulateDelete($event);
-        // En la práctica real hariamos update de los usuarios:
-        // this.getUsers();
-      })
+  deleteUserPopup($event:CaptionUserId) {
+    this.caption_user = $event;
+    const myModal = new bootstrap.Modal('#'+CSS_ID_MODAL);
+    myModal.show();
   }
-
-  /*Tests Methods*/
-  testEmulateDelete($event:string) {
-    const current = this.current_page();
-    let new_pages = this.pages[current].filter(user => user._id !== $event);
-    this.pages[current] = new_pages
-    this.triggerCurrentPage();
-  }
-
-
 }

@@ -136,3 +136,8 @@ Una vez instalado mediante el node package manager, tenemos que añadir en **ang
 
 ## 5. Diseño Componente Profile
 El componente Profile, se genera a través de la petición de usuario de la API que nos proporciona el servicio Service, y mediante el identificador de usuario que le pasamos por la ruta.
+
+
+Se declara "bootstrap", pero su valor no se lee nunca.ts(6133)
+No se encontró ningún archivo de declaración para el módulo 'bootstrap'. 'c:/UNIR_Master/Actividades/Actividad_6/UNIR_FULLSTACKDEVELOPER_ACTIVIDAD_6/UserProfile/node_modules/bootstrap/dist/js/bootstrap.js' tiene un tipo "any" de forma implícita.
+  Pruebe "npm i --save-dev @types/bootstrap" si existe o agregue un nuevo archivo de declaración (.d.ts) que incluya "declare module 'bootstrap';".

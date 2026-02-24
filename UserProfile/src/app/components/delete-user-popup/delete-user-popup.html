@@ -1,0 +1,15 @@
+<!-- Bootstrap Modal -->
+<div class="modal fade" [id]="cssIdModal" tabindex="-1" [aria-labelledby]="cssAriaLabelledBy">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-6" [id]="cssAriaLabelledBy">Deseas Borrar el usuario {{user_name}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="exitPopup($event)"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" (click)="exitPopup($event)" >Cancelar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="[deleteUser(),exitPopup($event)]" >Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>

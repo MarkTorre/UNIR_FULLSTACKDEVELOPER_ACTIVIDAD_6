@@ -1,9 +1,10 @@
 <section>
+  <app-delete-user-popup [user_id]="caption_user._id" [user_name]="caption_user.first_name"/>
   <div class="container-fluid text-center">
     <div class="row row-cols-5">
         @for(user of pages[current_page()]; track user.id ){
         <div class="col">
-          <app-caption [user]="user" (delete)="deleteUser($event)"></app-caption>
+          <app-caption [user]="user" (delete)="deleteUserPopup($event)"></app-caption>
         </div>
         }
     </div>
