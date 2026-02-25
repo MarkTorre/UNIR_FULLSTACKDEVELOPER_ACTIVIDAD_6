@@ -37,7 +37,7 @@ Se han definido las siguientes rutas:
 **/updateuser/1:** se cargará reutilizando el formulario de registro los datos del usuario a actualizar para que se pueda actualizar los datos y mandárselos al api.
 
 ### 2.2 Componentes.
-He definido hasta 6 tipos de componentes teniendo en cuenta la aplicación principal.
+He definido hasta 7 tipos de componentes teniendo en cuenta la aplicación principal.
 
 Componentes:
 
@@ -46,7 +46,8 @@ Componentes:
 * CP3 -> **Caption** Componente para la generación de los Captions.
 * CP4 -> **Profile** Componente para la visualización del perfil de cada usuario.
 * CP5 -> **Formulary** fomrulario de contacto para crear o modificar los usuarios.
-* CP6 -> **C404** Para mostrar error cuando la página no se encuentra.
+* CP6 -> **DeleteUserPopup** Componente Popup encargado eliminar un usuario.
+* CP7 -> **C404** Para mostrar error cuando la página no se encuentra.
 
 Estos se han creado mediante los siguientes comandos:
 
@@ -57,7 +58,6 @@ ng generate component components/profile --skip-tests
 ng generate component components/formulary --skip-tests
 ng generate component components/c404 --skip-tests
 ```
-
 ## 3. Creación De Las Interfaces y Servicios Para Conectar A Una API.
 Para esta  actividad se usará una página que simula una API: https://peticiones.online/users
 
@@ -133,11 +133,16 @@ Una vez instalado mediante el node package manager, tenemos que añadir en **ang
 ]
 ``` 
 
-
 ## 5. Diseño Componente Profile
 El componente Profile, se genera a través de la petición de usuario de la API que nos proporciona el servicio Service, y mediante el identificador de usuario que le pasamos por la ruta.
 
 
+
+## 6. Diseño Componente Formulary para crear un nuevo Usuario
+
+## 7. Reutilización Componente Fomrulary para modificar Usuario
 Se declara "bootstrap", pero su valor no se lee nunca.ts(6133)
 No se encontró ningún archivo de declaración para el módulo 'bootstrap'. 'c:/UNIR_Master/Actividades/Actividad_6/UNIR_FULLSTACKDEVELOPER_ACTIVIDAD_6/UserProfile/node_modules/bootstrap/dist/js/bootstrap.js' tiene un tipo "any" de forma implícita.
   Pruebe "npm i --save-dev @types/bootstrap" si existe o agregue un nuevo archivo de declaración (.d.ts) que incluya "declare module 'bootstrap';".
+
+
