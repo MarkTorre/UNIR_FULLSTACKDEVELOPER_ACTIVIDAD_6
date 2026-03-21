@@ -1,4 +1,4 @@
-import { Component, inject, Input, input} from '@angular/core';
+import { Component, inject, input} from '@angular/core';
 import { Service } from '../../services/service';
 import { Router } from '@angular/router';
 
@@ -18,8 +18,10 @@ export class DeleteUserPopup {
   public readonly cssIdModal: string = CSS_ID_MODAL;
   public readonly cssAriaLabelledBy: string = CSS_ARIA_LABELLY_BY;
 
-  @Input() user_id: string = "";
-  @Input() user_name: string = "";
+  //@Input() user_id: string = "";
+  //@Input() user_name: string = "";
+  public user_id   = input<string>("");
+  public user_name = input<string>("");
 
   exitPopup($event:any) {
     // NOTA: Me encontré con que el navegador me reportaba el siguiente mensaje de warning: Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor.
@@ -29,8 +31,9 @@ export class DeleteUserPopup {
   }
 
   deleteUser() {
-    this.clientHttp.deleteUser(this.user_id).subscribe((data) => {
+    this.clientHttp.deleteUser(this.user_id()).subscribe((data) => {
       this.router.navigate(['/'])
+      console.log(data)
       // En la práctica real hariamos update de los usuarios:
       // this.getUsers();
     })

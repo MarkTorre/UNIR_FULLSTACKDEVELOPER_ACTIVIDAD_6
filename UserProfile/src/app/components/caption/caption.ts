@@ -1,5 +1,5 @@
 import { IUser,IUSER_DEFAULT } from './../../interfaces/iuser';
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter, input, output} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 export type CaptionUserId = Pick<IUser, "_id" | "first_name">
@@ -11,10 +11,12 @@ export type CaptionUserId = Pick<IUser, "_id" | "first_name">
   styleUrl: './caption.css',
 })
 export class Caption {
-  @Input() user:IUser = IUSER_DEFAULT;
-  @Output() delete: EventEmitter<CaptionUserId> = new EventEmitter()
+  //@Input() user:IUser = IUSER_DEFAULT;
+  //@Output() delete: EventEmitter<CaptionUserId> = new EventEmitter()
+  public readonly user = input<IUser>(IUSER_DEFAULT)
+  public readonly delete = output<CaptionUserId>()
 
   deleteUser() {
-    this.delete.emit({_id:this.user._id, first_name: this.user.first_name})
+    this.delete.emit({_id:this.user()._id, first_name: this.user().first_name})
   }
 }

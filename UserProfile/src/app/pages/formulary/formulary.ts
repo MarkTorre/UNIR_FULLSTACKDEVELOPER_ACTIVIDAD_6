@@ -11,6 +11,9 @@ import { RequestNewUser, RequestUpdateUser, Service } from '../../services/servi
   styleUrl: './formulary.css',
 })
 export class Formulary {
+  private readonly regex_email = /^[\w.]+\@[a-zA-Z_]+?\.[a-zA-Z]{2,}$/
+  private readonly regex_image = /https?:\/\//i
+
   private clientHttp = inject(Service)
   private route = inject(ActivatedRoute);
   private user_id: string;
@@ -36,13 +39,13 @@ export class Formulary {
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.pattern(this.regex_email)
       ]),
       imagen: new FormControl('', [
         Validators.required,
-        Validators.pattern(/https?:\/\//i)
+        Validators.pattern(this.regex_image)
       ]),
-    })
+    }, [])
   }
 
   ngOnInit(): void {
@@ -68,6 +71,10 @@ export class Formulary {
           })
       })
     }
+  }
+
+  public checkControlInvalid(name:string): boolean {
+    return(this.form.controls[name].touched && this.form.controls[name].invalid);
   }
 
   private guardar(){

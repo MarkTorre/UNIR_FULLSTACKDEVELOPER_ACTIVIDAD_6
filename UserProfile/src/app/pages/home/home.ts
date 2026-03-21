@@ -1,12 +1,10 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { IPage, IPAGE_DEFAULT } from './../../interfaces/ipage';
-import { Component, inject, OnInit, WritableSignal, signal} from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { IPage } from '../../interfaces/ipage';
+import { Component, inject, signal} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Service } from '../../services/service';
-import { Observable } from 'rxjs';
-import { Caption, CaptionUserId } from '../caption/caption';
+import { Caption, CaptionUserId } from '../../components/caption/caption';
 import { IUser, IUSER_DEFAULT } from '../../interfaces/iuser';
-import { DeleteUserPopup, CSS_ID_MODAL } from '../delete-user-popup/delete-user-popup';
+import { DeleteUserPopup, CSS_ID_MODAL } from '../../components/delete-user-popup/delete-user-popup';
 import * as bootstrap from 'bootstrap';
 
 
@@ -23,7 +21,7 @@ export class Home {
   private clientHttp = inject(Service);
   // Propiedades
   pages: Array<Array<IUser>> =[[IUSER_DEFAULT]]
-  current_page: WritableSignal<number> = signal<number>(this.NO_PAGE); // Current page es la propiedad que nos indica en que pagina estamos.
+  current_page = signal<number>(this.NO_PAGE); // Current page es la propiedad que nos indica en que pagina estamos.
                                                                        // La he creado como signal para que cuando cambie su valor avise al bulce @for del html
                                                                        // de que debe ejecutarse de nuevo.
   caption_user: CaptionUserId = IUSER_DEFAULT; // Como CaptionUserId es un tipo Pick de IUser lo podemos inicializar directamente con IUSER_DEFAULT.

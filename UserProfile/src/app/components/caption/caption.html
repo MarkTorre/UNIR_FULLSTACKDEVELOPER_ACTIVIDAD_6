@@ -1,18 +1,18 @@
 <div class="card mycard-corrections">
   <div class="profile-image">
-    <img [src]="user.image" class="card-img-top" alt="...">
+    <img [src]="user().image" class="card-img-top" alt="...">
   </div>
   <div class="card-body">
-    <h2>{{user.first_name}} {{user.last_name}}</h2>
+    <h2>{{user().first_name}} {{user().last_name}}</h2>
     <div class="container text-center">
     <div class="row row-cols-3 profile-options">
       <div class="col">
         <img src="icons/search_wght200.svg" alt="">
-        <button type="button" class="btn" [routerLink]="['/user', user._id]">Ver Detalle</button>
+        <button type="button" class="btn" [routerLink]="['/user', user()._id]">Ver Detalle</button>
       </div>
       <div class="col">
         <img src="icons/update_wght200.svg" alt="">
-        <button type="button" class="btn" [routerLink]="['/updateuser', user._id]">Actualizar</button>
+        <button type="button" class="btn" [routerLink]="['/updateuser', user()._id]">Actualizar</button>
       </div>
       <div class="col">
         <img src="icons/delete_wght200.svg" alt="">

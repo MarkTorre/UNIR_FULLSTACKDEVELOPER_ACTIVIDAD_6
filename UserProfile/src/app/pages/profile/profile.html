@@ -16,7 +16,7 @@
       <span>{{user().email}}</span>
     </div>
     <div class="btn-group">
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-secondary">Eliminar</button>
+      <button class="btn btn-outline-secondary" (click)="deleteUserPopup()">Eliminar</button>
       <button class="btn btn-outline-secondary" (click)="routeToUpdateUser()">Actualizar</button>
       <button class="btn btn-outline-secondary" (click)="routeToHome()">Volver al listado</button>
     </div>

@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { Formulary } from './components/formulary/formulary';
-import { Profile } from './components/profile/profile';
-import { C404 } from './components/c404/c404';
-import { Home } from './components/home/home';
+import { Formulary } from './pages/formulary/formulary';
+import { Profile } from './pages/profile/profile';
+import { C404 } from './pages/c404/c404';
+import { Home } from './pages/home/home';
 
 
 export const routes: Routes = [

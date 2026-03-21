@@ -1,8 +1,10 @@
+import { CaptionUserId } from '../../components/caption/caption';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser, IUSER_DEFAULT } from '../../interfaces/iuser';
-import { Service } from './../../services/service';
+import { Service } from '../../services/service';
 import { Component, inject, signal} from '@angular/core';
-import { DeleteUserPopup } from '../delete-user-popup/delete-user-popup';
+import { DeleteUserPopup, CSS_ID_MODAL } from '../../components/delete-user-popup/delete-user-popup';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,7 @@ export class Profile {
   private clientHttp = inject(Service);
   private router     = inject(Router)
 
-  public  user = signal<IUser>(IUSER_DEFAULT);
+  public user = signal<IUser>(IUSER_DEFAULT);
 
   ngOnInit(): void {
     this.profile_id.params.subscribe(params => {
@@ -33,4 +35,10 @@ export class Profile {
   routeToUpdateUser() {
     this.router.navigate(["/updateuser", this.user()._id])
   }
+
+  deleteUserPopup() {
+    const myModal = new bootstrap.Modal('#'+CSS_ID_MODAL);
+    myModal.show();
+  }
+
 }
