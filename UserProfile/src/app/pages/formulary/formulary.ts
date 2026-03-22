@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal, signal,} from '@angular/core';
+import { Component, inject, WritableSignal, signal, input,} from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IUser} from '../../interfaces/iuser';
@@ -15,8 +15,10 @@ export class Formulary {
   private readonly regex_image = /https?:\/\//i
 
   private clientHttp = inject(Service)
-  private route = inject(ActivatedRoute);
   private user_id: string;
+
+  public readonly isNew = input<boolean>(false);
+  public readonly id = input<string>("");   // Recibe automáticamente el :id de la URL
 
   title: WritableSignal<string>;
   button_text: WritableSignal<string>;
@@ -48,28 +50,36 @@ export class Formulary {
     }, [])
   }
 
-  ngOnInit(): void {
-    console.log()
-    if(this.route.routeConfig?.path === "newuser") {
+  async ngOnInit(): Promise<void> {
+    if(this.isNew()) {
       this.title.set("NUEVO USUARIO");
       this.button_text.set("Guardar");
       this.onSubmit = this.guardar;
     } else {
-      this.route.params.subscribe(params => {
-          this.title.set("ACTUALIZAR USUARIO");
-          this.button_text.set("Actualizar");
-          this.onSubmit = this.actualizar;
-          this.user_id = params['id'];
-
-          this.clientHttp.getUserById(this.user_id).subscribe( ( data:IUser ) => {
-            this.form.setValue({
-              nombre: data.first_name,
-              apellido: data.last_name,
-              email: data.email,
-              imagen: data.image
-            });
+      this.user_id = this.id();
+      if(this.user_id) {
+        this.title.set("ACTUALIZAR USUARIO");
+        this.button_text.set("Actualizar");
+        this.onSubmit = this.actualizar;
+        try {
+          let response: IUser  = await this.clientHttp.getUserById(this.user_id);
+          this.form.setValue({
+            nombre: response.first_name,
+            apellido: response.last_name,
+            email: response.email,
+            imagen: response.image
           })
-      })
+
+          if (!response.hasOwnProperty('error')) {
+            console.log(`GET ${response.first_name}`);
+          } else {
+            console.log(`GET ERROR`);
+          }
+          console.log(response)
+        } catch (error) {
+          console.log(error)
+        }
+      }
     }
   }
 
@@ -77,7 +87,7 @@ export class Formulary {
     return(this.form.controls[name].touched && this.form.controls[name].invalid);
   }
 
-  private guardar(){
+  private async guardar() {
     const new_user: RequestNewUser = {
       first_name: this.form.value.nombre,
       last_name: this.form.value.apellido,
@@ -85,19 +95,36 @@ export class Formulary {
       username: this.form.value.email,
       password: ""
     }
-    this.clientHttp.createNewUser(new_user).subscribe((response)=>{
+
+    try {
+      let response: IUser = await this.clientHttp.createNewUser(new_user);
+      console.log(`POST ${response.first_name}`);
       console.log(response)
-    })
+    } catch (error) {
+      console.log(error)
+
+    }
+
   }
 
-  private actualizar(){
+  private async actualizar() {
     const update_user: RequestUpdateUser = {
       first_name: this.form.value.nombre,
       username: this.form.value.username
     }
-    this.clientHttp.updateUser(this.user_id ,update_user).subscribe((response)=>{
-      console.log(response)
-    })
+
+    try {
+      let response: IUser = await this.clientHttp.updateUser(this.user_id ,update_user);
+      if (!response.hasOwnProperty('error')) {
+        console.log(`PUT ${response.first_name}`);
+      } else {
+        console.log(`PUT ERROR`);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
 }

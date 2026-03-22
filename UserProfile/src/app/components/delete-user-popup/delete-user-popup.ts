@@ -1,6 +1,7 @@
 import { Component, inject, input} from '@angular/core';
 import { Service } from '../../services/service';
 import { Router } from '@angular/router';
+import { IUser } from '../../interfaces/iuser';
 
 export const CSS_ID_MODAL: string = "deleteUserPopup";
 export const CSS_ARIA_LABELLY_BY: string = "deleteUserPopupLabel";
@@ -30,12 +31,21 @@ export class DeleteUserPopup {
     $event.currentTarget.blur();
   }
 
-  deleteUser() {
-    this.clientHttp.deleteUser(this.user_id()).subscribe((data) => {
-      this.router.navigate(['/'])
-      console.log(data)
-      // En la práctica real hariamos update de los usuarios:
-      // this.getUsers();
-    })
+  async deleteUser() {
+    try {
+      let response: IUser = await this.clientHttp.deleteUser(this.user_id()); // Nota: Cambiar this.user_id para simular error
+
+      if (!response.hasOwnProperty('error')) {
+        console.log(`DELETE ${response.first_name}`);
+      } else {
+        console.log(`DELETE ERROR`);
+      }
+      console.log(response);
+      await this.router.navigate(['/**']); // No se si es una forma muy burda de refrescar la página, pero es la forma más sencilla que he encontrado sin salirme del scope de lo que se enseña en clase. Pero me he encontrado que cuando borro un usuario al estar en la misma página el componente no se refresca y entonces no se ejecuta la petición para obtener todos los usuarios "nuevos actualizados".
+      await this.router.navigate(['/home']);
+    } catch (error) {
+      console.log("DELETE ERROR");
+      console.log(error)
+    }
   }
 }

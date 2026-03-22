@@ -2,7 +2,7 @@ import { CaptionUserId } from '../../components/caption/caption';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser, IUSER_DEFAULT } from '../../interfaces/iuser';
 import { Service } from '../../services/service';
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, input, signal} from '@angular/core';
 import { DeleteUserPopup, CSS_ID_MODAL } from '../../components/delete-user-popup/delete-user-popup';
 import * as bootstrap from 'bootstrap';
 
@@ -13,19 +13,22 @@ import * as bootstrap from 'bootstrap';
   styleUrl: './profile.css',
 })
 export class Profile {
-  private profile_id = inject(ActivatedRoute);
   private clientHttp = inject(Service);
   private router     = inject(Router)
 
-  public user = signal<IUser>(IUSER_DEFAULT);
+  public readonly id = input<string>();   // Recibe automáticamente el :id de la URL
+  public user        = signal<IUser>(IUSER_DEFAULT);
 
-  ngOnInit(): void {
-    this.profile_id.params.subscribe(params => {
-      const id: string = params['id'];
-      this.clientHttp.getUserById(id).subscribe( ( data:IUser ) => {
-        this.user.set(data);
-      })
-    })
+  async ngOnInit(): Promise<void> {
+    const url_id = this.id();
+    if(url_id){
+      try {
+        let response: IUser = await this.clientHttp.getUserById(url_id);
+        this.user.set(response);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   routeToHome() {

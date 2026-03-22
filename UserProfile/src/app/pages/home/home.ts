@@ -26,40 +26,47 @@ export class Home {
                                                                        // de que debe ejecutarse de nuevo.
   caption_user: CaptionUserId = IUSER_DEFAULT; // Como CaptionUserId es un tipo Pick de IUser lo podemos inicializar directamente con IUSER_DEFAULT.
 
-  ngOnInit(): void {
-    this.getUsers();
+  async ngOnInit() {
+    await this.getAllPages();
     this.current_page.set(0);
   }
 
-  getUsers(){
+  async getAllPages(){
     this.pages = [];
-    let final = 0
-    this.clientHttp.getAllUsers( ).subscribe( (data:IPage) => {
-      // Ordena los usuarios según su ID
-      data.results.sort((a, b) => a.id - b.id);
+
+    try {
+      // La primera petición nos dará información sobre las páginas
+      const response: IPage = await this.getUsersPage(1);
+      this.pages.push(response.results)
+
       // Generamos un array con el número de usuarios por pagina que nos indica la API
-      for(let i = 0; i < (data.total*data.total_pages); i += data.per_page){
-        final = i+data.per_page;
-        if(final <= data.total) {
-          this.pages.push(data.results.slice(i, final))
-        } else {
-          this.pages.push(data.results.slice(i, data.total_pages))
-          break;
-        }
+      for(let n_page = response.page+1; n_page <= (response.total_pages); n_page += response.per_page){
+        const response: IPage = await this.getUsersPage(n_page);
+        this.pages.push(response.results)
       }
-      // Almacena los usuarios en cada pagina a mostrar
-      this.triggerCurrentPage();
-    })
+
+      console.log(`GET ALL USERS`);
+      console.log(response)
+
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  changeCurrentPage($event: any) {
+  async getUsersPage(page: number): Promise<IPage> {
+    try {
+      // Obtenemos la página con todos sus usuarios
+      const response: IPage = await this.clientHttp.getAllUsers(page);
+      // Ordena la ista de usuarios según su ID
+      response.results.sort((a, b) => a.id - b.id);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  changeCurrentPage($event: number) {
     this.current_page.set($event);
-  }
-
-  triggerCurrentPage() {
-    const current = this.current_page()
-    this.current_page.set(this.NO_PAGE)
-    this.current_page.set(current)
   }
 
   deleteUserPopup($event:CaptionUserId) {
