@@ -1,5 +1,4 @@
-import { CaptionUserId } from '../../components/caption/caption';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { IUser, IUSER_DEFAULT } from '../../interfaces/iuser';
 import { Service } from '../../services/service';
 import { Component, inject, input, signal} from '@angular/core';
