@@ -43,10 +43,6 @@ export class Home {
         const response: IPage = await this.getUsersPage(n_page);
         this.pages.push(response.results)
       }
-
-      console.log(`GET ALL USERS`);
-      console.log(response)
-
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +54,8 @@ export class Home {
       const response: IPage = await this.clientHttp.getAllUsers(page);
       // Ordena la ista de usuarios según su ID
       response.results.sort((a, b) => a.id - b.id);
+      console.log(`GET ALL USERS PAGE ${page}`);
+      console.log(response)
       return response;
     } catch (error) {
       throw error;
