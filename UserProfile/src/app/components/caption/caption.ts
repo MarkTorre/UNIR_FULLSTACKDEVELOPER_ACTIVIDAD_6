@@ -11,7 +11,7 @@ export type CaptionUserId = Pick<IUser, "_id" | "first_name">
   styleUrl: './caption.css',
 })
 export class Caption {
-  public readonly user = input<IUser>(IUSER_DEFAULT)
+  public readonly user   = input<IUser>(IUSER_DEFAULT)
   public readonly delete = output<CaptionUserId>()
 
   deleteUser() {

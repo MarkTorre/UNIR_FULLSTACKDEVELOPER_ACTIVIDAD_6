@@ -19,7 +19,7 @@
   }
   button {
       padding: 3px;
-      font-size: 18cqw; /*Container Query Width: midel el 18% del ancho del padre contenedor*/
+      font-size: 18cqw; /*Container Query Width: mide el 18% del ancho del padre contenedor*/
   }
 }
 
