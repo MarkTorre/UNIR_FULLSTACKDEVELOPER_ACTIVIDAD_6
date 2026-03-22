@@ -15,11 +15,10 @@ import * as bootstrap from 'bootstrap';
   styleUrl: './home.css',
 })
 export class Home {
-  // Constantes
   public readonly NO_PAGE: number = -1;
-  // Servicios
+
   private clientHttp = inject(Service);
-  // Propiedades
+
   pages: Array<Array<IUser>> =[[IUSER_DEFAULT]]
   current_page = signal<number>(this.NO_PAGE); // Current page es la propiedad que nos indica en que pagina estamos.
                                                                        // La he creado como signal para que cuando cambie su valor avise al bulce @for del html
@@ -39,7 +38,7 @@ export class Home {
       const response: IPage = await this.getUsersPage(1);
       this.pages.push(response.results)
 
-      // Generamos un array con el número de usuarios por pagina que nos indica la API
+      // Generamos un array con el número de usuarios por página que nos indica la API
       for(let n_page = response.page+1; n_page <= (response.total_pages); n_page += response.per_page){
         const response: IPage = await this.getUsersPage(n_page);
         this.pages.push(response.results)

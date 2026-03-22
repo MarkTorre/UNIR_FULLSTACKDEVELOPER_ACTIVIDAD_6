@@ -1,6 +1,5 @@
 import { Component, inject, WritableSignal, signal, input,} from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { IUser} from '../../interfaces/iuser';
 import { RequestNewUser, RequestUpdateUser, Service } from '../../services/service';
 
@@ -22,8 +21,8 @@ export class Formulary {
 
   title: WritableSignal<string>;
   button_text: WritableSignal<string>;
-  form: FormGroup;
   onSubmit: Function;
+  form: FormGroup;
 
   constructor(){
     this.user_id = "";
@@ -102,9 +101,7 @@ export class Formulary {
       console.log(response)
     } catch (error) {
       console.log(error)
-
     }
-
   }
 
   private async actualizar() {
@@ -124,7 +121,5 @@ export class Formulary {
     } catch (error) {
       console.log(error)
     }
-
   }
-
 }

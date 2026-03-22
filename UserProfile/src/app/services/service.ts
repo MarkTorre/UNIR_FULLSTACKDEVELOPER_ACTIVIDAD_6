@@ -33,6 +33,4 @@ export class Service {
   deleteUser(id: string): Promise<IUser> {
     return lastValueFrom(this.httpClient.delete<IUser>(this.url+`/${id}`));
   }
-
-
 }

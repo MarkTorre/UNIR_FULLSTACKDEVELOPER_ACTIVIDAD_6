@@ -1,11 +1,9 @@
-/* 1. Estilos generales del componente */
 :host {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* 2. Estilos del formulario (anidados si usas SCSS o Angular moderno) */
 form {
   display: flex;
   flex-direction: column;
@@ -26,7 +24,7 @@ form {
     border-radius: 5px;
     padding: 5px;
     border: 1px solid rgb(194, 194, 194);
-    outline: none; /* Evita el borde azul por defecto para ver mejor tu rojo */
+    outline: none;
   }
 
   span {
@@ -34,7 +32,6 @@ form {
   }
 }
 
-/* 3. La regla que no te funcionaba (fuera de cualquier llave) */
 input.ng-invalid.ng-touched {
   border-bottom: 3px solid tomato;
 }

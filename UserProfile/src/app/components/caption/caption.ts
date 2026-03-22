@@ -1,5 +1,5 @@
 import { IUser,IUSER_DEFAULT } from './../../interfaces/iuser';
-import { Component, Input, Output, EventEmitter, input, output} from '@angular/core';
+import { Component, input, output} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 export type CaptionUserId = Pick<IUser, "_id" | "first_name">
